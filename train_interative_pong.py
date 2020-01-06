@@ -24,11 +24,11 @@ def Train():
 
     learning_rate = 3e-4
     clip_range = 0.2
-    n_timesteps = int(1e8)
-    hyperparmas = {'nsteps': 1024, 'noptepochs': 10, 'nminibatches': 32, 'lr': learning_rate, 'cliprange': clip_range,
+    n_timesteps = int(3e8)
+    hyperparmas = {'nsteps': 256, 'noptepochs': 8, 'nminibatches': 16, 'lr': learning_rate, 'cliprange': clip_range,
                    'vf_coef': 0.5, 'ent_coef': 0.00}
 
-    num_env = 1
+    num_env = 64
     env = SubprocVecEnv([EnvFunc(i) for i in range(num_env)], num_agent=iNum_Player)
     env = VecMonitor(env)
     # env = VecNormalize(env)
